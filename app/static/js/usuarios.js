@@ -1,12 +1,4 @@
-async function eliminarUsuario(id) {
-  if (confirm("¿Seguro que deseas eliminar este usuario?")) {
-    const response = await fetch(`/usuarios/${id}`, { method: 'DELETE' });
-    const result = await response.json();
-    alert(result.mensaje);
-    location.reload();
-  }
-}
-
+// Filtrar usuarios por estado
 function filtrarUsuarios(tipo) {
   const filas = document.querySelectorAll("tbody tr");
   filas.forEach(fila => {
@@ -19,5 +11,43 @@ function filtrarUsuarios(tipo) {
       (tipo === "inactivos" && !esActivo)
         ? ""
         : "none";
+  });
+}
+
+// Confirmar eliminación
+function eliminarUsuario(id) {
+  Swal.fire({
+    title: '¿Eliminar usuario?',
+    text: "Esta acción no se puede deshacer.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(`/usuarios/${id}`, { method: 'DELETE' })
+        .then(res => res.json())
+        .then(data => {
+          Swal.fire('Eliminado', data.mensaje, 'success')
+            .then(() => location.reload());
+        })
+        .catch(() => Swal.fire('Error', 'No se pudo eliminar el usuario.', 'error'));
+    }
+  });
+}
+
+// Confirmar creación o edición
+function confirmarAccion(event, mensaje) {
+  event.preventDefault();
+  Swal.fire({
+    title: mensaje,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, continuar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      event.target.submit();
+    }
   });
 }

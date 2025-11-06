@@ -8,28 +8,30 @@
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="/">
+        <a class="navbar-brand fw-bold" href="/">
         <i class="fas fa-database me-2"></i>Flask MVC Base
-      </a>
+        </a>
     </div>
     {% if session.get('usuario_nombre') %}
-  <span class="navbar-text text-light me-2">Hola, {{ session['usuario_nombre'] }}</span>
-  <a href="{{ url_for('auth_bp.logout') }}" class="btn btn-outline-light btn-sm">Salir</a>
+    <span class="navbar-text text-light me-2">Hola, {{ session['usuario_nombre'] }}</span>
+    <a href="{{ url_for('auth_bp.logout') }}" class="btn btn-outline-light btn-sm">Salir</a>
 {% endif %}
 
-  </nav>
+    </nav>
 
-  <main class="container">
+    <main class="container">
     {% block content %}{% endblock %}
-  </main>
+    </main>
 
-  <footer class="text-center py-3">
+    <footer class="text-center py-3">
     <small>© 2025 Erik Vasquez — Flask MVC Base</small>
-  </footer>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
 </body>
 </html>
