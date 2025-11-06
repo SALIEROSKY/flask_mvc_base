@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Panel de Control{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="fw-bold mb-3">Bienvenido, {{ usuario }}</h2>
+  <p>Selecciona una opción para continuar:</p>
+
+  <div class="mt-4">
+    <a href="{{ url_for('usuario_bp.vista_usuarios') }}" class="btn btn-primary me-2">Gestionar Usuarios</a>
+    <a href="{{ url_for('auth_bp.logout') }}" class="btn btn-outline-danger">Cerrar Sesión</a>
+  </div>
+</div>
+{% endblock %}

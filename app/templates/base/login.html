@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height:70vh;">
+  <div class="card p-4 shadow-lg" style="width: 22rem;">
+    <h4 class="mb-3 text-center">Inicio de Sesión</h4>
+    <form method="POST" action="{{ url_for('auth_bp.login') }}">
+      <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-dark w-100">Entrar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
