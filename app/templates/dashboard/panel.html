@@ -1,0 +1,41 @@
+{% extends "base/layout.html" %}
+{% block title %}Panel de Administración{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="fw-bold">Bienvenido, {{ nombre_usuario }} 👋</h2>
+  <p class="text-muted mb-4">Este es el panel de control de tu aplicación Flask MVC.</p>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-3">
+        <h5><i class="bi bi-people me-2 text-primary"></i>Usuarios</h5>
+        <p class="text-muted">Administra los usuarios registrados en el sistema.</p>
+        <a href="{{ url_for('usuario_bp.vista_usuarios') }}" class="btn btn-outline-primary btn-sm">
+          Ir a Usuarios
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-3">
+        <h5><i class="bi bi-shield-lock me-2 text-success"></i>Roles</h5>
+        <p class="text-muted">Gestiona los permisos y tipos de usuarios.</p>
+        <a href="{{ url_for('rol_bp.vista_roles') }}" class="btn btn-outline-success btn-sm">
+          Ir a Roles
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 p-3">
+        <h5><i class="bi bi-gear me-2 text-secondary"></i>Configuraciones</h5>
+        <p class="text-muted">Accede a ajustes generales de la plataforma.</p>
+        <a href="#" class="btn btn-outline-secondary btn-sm disabled">
+          Próximamente
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

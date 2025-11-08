@@ -1,0 +1,16 @@
+{% if session.get('usuario_id') %}
+  <a href="{{ url_for('dashboard_bp.dashboard') }}" 
+     class="{% if request.endpoint == 'dashboard_bp.dashboard' %}active{% endif %}">
+    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+  </a>
+
+  <a href="{{ url_for('usuario_bp.vista_usuarios') }}" 
+     class="{% if 'usuario_bp' in request.endpoint %}active{% endif %}">
+    <i class="bi bi-people me-2"></i> Usuarios
+  </a>
+
+  <a href="{{ url_for('rol_bp.vista_roles') }}" 
+     class="{% if 'rol_bp' in request.endpoint %}active{% endif %}">
+    <i class="bi bi-shield-lock me-2"></i> Roles
+  </a>
+{% endif %}

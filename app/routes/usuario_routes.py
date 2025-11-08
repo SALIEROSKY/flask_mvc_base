@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for, flash
+from app.utils.decorators import login_required, role_required
 from app.controllers.usuario_controller import (
     obtener_usuarios,
     obtener_usuario_por_id,
@@ -59,16 +60,19 @@ def eliminar(usuario_id):
         return jsonify({"mensaje": "Usuario no encontrado"}), 404
     return jsonify({"mensaje": "Usuario eliminado"}), 200
 
-
-# ------------------- VISTAS HTML ------------------- #
+# ------------------- VISTAS HTML (con seguridad) ------------------- #
 
 @usuario_bp.route('/usuarios/html', methods=['GET'])
+@login_required
+@role_required('admin')
 def vista_usuarios():
     usuarios = obtener_usuarios()
     return render_template('usuarios/index.html', usuarios=usuarios)
 
 
 @usuario_bp.route('/usuarios/nuevo', methods=['GET', 'POST'])
+@login_required
+@role_required('admin')
 def nuevo_usuario():
     if request.method == 'POST':
         nombre = request.form['nombre']
@@ -80,6 +84,8 @@ def nuevo_usuario():
 
 
 @usuario_bp.route('/usuarios/<int:usuario_id>/editar', methods=['GET', 'POST'])
+@login_required
+@role_required('admin')
 def editar_usuario(usuario_id):
     usuario = obtener_usuario_por_id(usuario_id)
     if not usuario:

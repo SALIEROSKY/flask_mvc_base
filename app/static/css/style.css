@@ -1,18 +1,37 @@
-body {
+/* ----- Estructura base ----- */
+html, body {
+      height: 100%;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+      background-color: #f8f9fa;
     }
+
     main {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 0;
     }
+
     footer {
-      background-color: #0f172a;
-      color: #cbd5e1;
+      background-color: #212529;
+      color: #f8f9fa;
+      text-align: center;
+      padding: 0.75rem;
       font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1030;
+    }
+
+    footer a {
+      color: #f8f9fa;
+      text-decoration: underline;
+    }
+
+    footer a:hover {
+      color: #adb5bd;
     }

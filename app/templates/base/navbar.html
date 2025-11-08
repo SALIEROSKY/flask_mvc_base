@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="{{ url_for('dashboard_bp.dashboard') }}">Flask MVC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        {% if session.get('usuario_id') %}
+          <li class="nav-item text-white me-3">
+            <i class="bi bi-person-circle"></i> {{ session.get('usuario_nombre', 'Usuario') }}
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('auth_bp.logout') }}" class="btn btn-outline-light btn-sm">Cerrar sesión</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a href="{{ url_for('auth_bp.login') }}" class="btn btn-outline-light btn-sm">Iniciar sesión</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

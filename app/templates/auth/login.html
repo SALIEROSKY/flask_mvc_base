@@ -1,0 +1,17 @@
+{% extends "base/layout.html" %}
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="text-center mb-4">Iniciar Sesión</h3>
+  <form method="POST">
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo</label>
+      <input type="email" class="form-control" id="correo" name="correo" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-dark w-100">Entrar</button>
+  </form>
+</div>
+{% endblock %}
